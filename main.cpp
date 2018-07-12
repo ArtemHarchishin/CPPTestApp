@@ -1,4 +1,6 @@
 #include <iostream>
+#include <set>
+#include <map>
 
 void link();
 
@@ -8,11 +10,24 @@ void bitwiseOp();
 
 bool isActive(bool retVal);
 
+void stdSetOp();
+
 int main() {
 //    pointer();
 //    link();
-    bitwiseOp();
+//    bitwiseOp();
+    stdSetOp();
     return 0;
+}
+
+void stdSetOp() {
+    std::map<std::string, std::set<std::string>> preferences;
+    std::string prefId = "foo";
+    std::string value = "bar";
+
+    std::cout << preferences[prefId].count(value) << std::endl;
+    preferences[prefId].emplace(value);
+    std::cout << preferences[prefId].count(value) << std::endl;
 }
 
 void bitwiseOp() {
@@ -66,7 +81,7 @@ bool isActive(bool retVal) {
     return retVal;
 }
 
-bool f(char& a, char* b) {
+bool f(char &a, char *b) {
     a += 1;
     *b += 1;
     std::cout << "f, a = " << a << std::endl;
